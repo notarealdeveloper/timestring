@@ -49,7 +49,7 @@ class Range(object):
         elif re.match(r"(\[|\()((\"\d{4}-\d{2}-\d{2} \d{2}:\d{2}:\d{2}(\.\d+)?(\+|\-)\d{2}\")|infinity),((\"\d{4}-\d{2}-\d{2} \d{2}:\d{2}:\d{2}(\.\d+)?(\+|\-)\d{2}\")|infinity)(\]|\))", start):
             """postgresql tsrange and tstzranges support
             """
-            start, end = tuple(re.sub('[^\w\s\-\:\.\+\,]', '', start).split(','))
+            start, end = tuple(re.sub(r'[^\w\s\-\:\.\+\,]', '', start).split(','))
             self._dates = (Date(start), Date(end))
 
         else:
@@ -230,9 +230,9 @@ class Range(object):
 
         if format:
             if short:
-                return re.sub('((?<!\d)0\w\s?)', '', "%dy %dm %dd %dh %dm %ss" % tuple(full))
+                return re.sub(r'((?<!\d)0\w\s?)', '', "%dy %dm %dd %dh %dm %ss" % tuple(full))
             else:
-                return re.sub('((?<!\d)0\s\w+\s?)', '', "%d years %d months %d days %d hours %d minutes %d seconds" % tuple(full))
+                return re.sub(r'((?<!\d)0\s\w+\s?)', '', "%d years %d months %d days %d hours %d minutes %d seconds" % tuple(full))
         return full
 
     @property

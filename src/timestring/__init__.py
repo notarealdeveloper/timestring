@@ -63,7 +63,7 @@ def findall(text):
     results = TIMESTRING_RE.findall(text)
     dates = []
     for date in results:
-        if re.compile('((next|last)\s(\d+|couple(\sof))\s(weeks|months|quarters|years))|(between|from)', re.I).match(date[0]):
+        if re.compile(r'((next|last)\s(\d+|couple(\sof))\s(weeks|months|quarters|years))|(between|from)', re.I).match(date[0]):
             dates.append((date[0].strip(), Range(date[0])))
         else:
             dates.append((date[0].strip(), Date(date[0])))
