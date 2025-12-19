@@ -3,8 +3,6 @@ import sys
 import argparse
 from datetime import datetime
 
-__version__ = VERSION = version = '1.6.2'
-
 
 class TimestringInvalid(Exception):
     def __init__(self, reason):
