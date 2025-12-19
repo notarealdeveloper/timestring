@@ -1,6 +1,0 @@
-nose
-rednose
-nose-cov
-codecov
-ddt
-six
